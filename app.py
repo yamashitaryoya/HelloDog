@@ -10,7 +10,7 @@ breeds_response = requests.get('https://dog.ceo/api/breeds/list/all')
 breeds_data = breeds_response.json()
 breeds_list = list(breeds_data['message'].keys())
 
-# 犬種を選択するセレクトボックス
+# 犬種の選択
 selected_breed = st.selectbox('Select dog breed', breeds_list, help='Select a dog breed to view its image.')
 
 # ボタンのスタイルを変更
@@ -39,10 +39,8 @@ if st.button('Come here!!'):
     # 犬の画像を表示
     st.image(image_url, caption=f'Here is a {selected_breed} for you!', use_column_width=True)
 
-    # 画像が表示されたことを示すメッセージ
-    st.success('Enjoy your dog image! 🐕')
 else:
-    # 画像がない場合のプレースホルダー
+    # 画像がない場合
     st.image('https://via.placeholder.com/300x200.png?text=Select+a+breed+and+click+the+button+to+see+the+dog+image')
 
 # フッター
